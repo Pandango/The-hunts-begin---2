@@ -12,7 +12,7 @@ public class playerHunter : MonoBehaviour {
     [SerializeField]
     bool isEnter = false;
 
-    public AudioClip shootClip;
+    public AudioSource SlashS;
     public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab;
     public float shootForce,slashForce, slashPower;
     public KeyCode trap;
@@ -25,9 +25,12 @@ public class playerHunter : MonoBehaviour {
     public float jumpSpeed = 5;
     public float moveSpeed = 5;
     private float speedx;
+    
     // Use this for initialization
     void Start () {
         characterContoller = GetComponent<CharacterController>();
+        AudioSource[] audios = GetComponents<AudioSource>();
+        SlashS = audios[0];
 	}
 	
 	// Update is called once per frame
@@ -50,6 +53,7 @@ public class playerHunter : MonoBehaviour {
         }
         if ((Input.GetMouseButton(1)) && (ScoreController.skillCD2 == 0))
         {
+        	SlashS.Play();
             Slash();
         }
         if ((Input.GetKeyDown(trap)) && (ScoreController.skillCD3 == 0))
