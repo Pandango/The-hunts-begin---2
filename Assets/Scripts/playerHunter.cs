@@ -9,16 +9,20 @@ public class playerHunter : MonoBehaviour {
     bool isShoot = false;
     bool PowerShot = false;
 
+	public Renderer spriteR, spriteL ;
+
+	float ab=1f;
+
     [SerializeField]
     bool isEnter = false;
 
-    public AudioSource SlashS;
+    AudioSource SlashS;
     public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab;
     public float shootForce,slashForce, slashPower;
     public KeyCode trap;
 
 
-    Transform bow = null;
+	Transform bow,rotate,Leg = null;
 
     public float gravity = 15.5f;
     private float fallSpeed;
@@ -31,6 +35,11 @@ public class playerHunter : MonoBehaviour {
         characterContoller = GetComponent<CharacterController>();
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
+
+		spriteR.enabled = true;
+		spriteL.enabled = false;
+
+
 	}
 	
 	// Update is called once per frame
@@ -65,7 +74,7 @@ public class playerHunter : MonoBehaviour {
     void groundCheck()
     {
         //using raycast need start position/direction/magnitude,lenght
-        isGrounded = (Physics.Raycast(transform.position, -transform.up, characterContoller.height / 2.8f));
+        isGrounded = (Physics.Raycast(transform.position, -transform.up, characterContoller.height / 1.8f));
     }
 
     void Move()
@@ -100,17 +109,48 @@ public class playerHunter : MonoBehaviour {
 
     void Flip()
     {
+		if (faceRight) {
+			spriteL.enabled = true;
+			spriteR.enabled = false;
+
+		}else if (!faceRight) {
+			spriteR.enabled = true;
+			spriteL.enabled = false;
+		}
+
         faceRight = !faceRight;
-        Vector3 theScale = transform.localScale;
+
+		if (Leg == null)
+			Leg = gameObject.transform.Find("LEGS");
+
+		Vector3 theScale = Leg.localScale;
         theScale.x *= -1;
-        transform.localScale = theScale;
+		Leg.localScale = theScale;
+
+		/*
+		Vector3 TopScale = spritePic.localScale;
+		Quaternion TopRotate = spritePic.localRotation;
+		//TopScale.x *= -1;
+		//TopScale.y *= -1;
+		//TopRotate.z = -1;
+		if (TopRotate.z > 0 && TopRotate.z < 180)
+		{
+			float dif = 180 - TopRotate.z;
+			TopRotate.z = dif;
+		}
+
+		//TopRotate.z -= TopRotate.z;
+
+		spritePic.localScale = TopScale;
+		spritePic.localRotation = TopRotate; */
 
     }
 
     void MoveMachineMouse()
     {
-        if (bow == null)
-            bow = gameObject.transform.Find("ShootPoint");
+		
+        if (rotate == null)
+			rotate = gameObject.transform.Find("MainRotatePoint");
         /*Vector2 dir = Input.mousePosition - transform.position;
         float angle = Mathf.Tan(dir.y / dir.x) * Mathf.Rad2Deg;
         
@@ -121,44 +161,54 @@ public class playerHunter : MonoBehaviour {
         transform.rotation = new Quaternion(0, 0, rot.z -0.1f, rot.w - 0.1f);*/
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        bow.rotation = Quaternion.LookRotation(Vector3.forward , mousePos - transform.position);
+		rotate.rotation = Quaternion.LookRotation(Vector3.forward , (mousePos - transform.position)*ab );
+
 
         if (mousePos.x > transform.position.x && !faceRight)
         {
+			ab = 1f;
             Flip();
         }
         else if (mousePos.x < transform.position.x && faceRight)
         {
-            Flip();
+			ab = 0.5f;
+			Flip();
         }
 
     }
 
         void Shoot()
-    {
+    	{
+			if (faceRight) {
+				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
+			} else if (!faceRight) {
+				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
+			}
+		
 
-        if (bow == null)
-            bow = gameObject.transform.Find("ShootPoint"); // todo use full path for faster
+			// instantiat 1 bullet
 
-        // instantiat 1 bullet
-
-        var Arrow = (GameObject)Instantiate(ArrowPrefab, bow.position, bow.rotation);
-        Arrow.GetComponent<Rigidbody>().velocity = bow.TransformDirection(new Vector3(0, shootForce, 0));
-        //Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
-        ScoreController.skillCD0 = 1f;
-        ScoreController.skillCD2 = 0.5f;
+			var Arrow = (GameObject)Instantiate (ArrowPrefab, bow.position, bow.rotation);
+			Arrow.GetComponent<Rigidbody> ().velocity = bow.TransformDirection (new Vector3 (0, shootForce, 0));
+			//Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
+			ScoreController.skillCD0 = 1f;
+			ScoreController.skillCD2 = 0.5f;
     }
 
     void ShootSuper()
     {
 
-        if (bow == null)
-            bow = gameObject.transform.Find("ShootPoint"); // todo use full path for faster
+			if (faceRight) {
+				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
+			}else if (!faceRight) {
+				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
+			}
+
 
         // instantiat 1 bullet
 
         var ArrowSuper = (GameObject)Instantiate(ArrowSuperPrefab, bow.position, bow.rotation);
-        ArrowSuper.GetComponent<Rigidbody>().velocity = bow.TransformDirection(new Vector3(0, shootForce*5/2, 0));
+        ArrowSuper.GetComponent<Rigidbody>().velocity = bow.TransformDirection(new Vector3(0,		 shootForce*5/2, 0));
         //Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 
         ScoreController.skillCD1 = 10f;
@@ -167,8 +217,12 @@ public class playerHunter : MonoBehaviour {
     void Slash()
     {
 
-        if (bow == null)
-            bow = gameObject.transform.Find("ShootPoint"); // todo use full path for faster
+			if (faceRight) {
+				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
+			}else if (!faceRight) {
+				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
+			}
+
 
         // instantiat 1 bullet
 
