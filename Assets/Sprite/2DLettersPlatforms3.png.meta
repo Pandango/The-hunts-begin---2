@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: a5cac5425748e694dbaf56baa43e3e0e
+timeCreated: 1458982782
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 2DLettersPlatforms3_0
+    21300002: 2DLettersPlatforms3_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: 2DLettersPlatforms3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 258
+        width: 512
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 235, y: 97.5}
+        - {x: 214, y: 97.5}
+        - {x: 213, y: 98.5}
+        - {x: 188, y: 98.5}
+        - {x: 187, y: 99.5}
+        - {x: 110, y: 99.5}
+        - {x: 109, y: 98.5}
+        - {x: 90, y: 98.5}
+        - {x: 89, y: 97.5}
+        - {x: 76, y: 97.5}
+        - {x: 64, y: 96.5}
+        - {x: 63, y: 95.5}
+        - {x: 42, y: 95.5}
+        - {x: 41, y: 96.5}
+        - {x: 28, y: 96.5}
+        - {x: 27, y: 97.5}
+        - {x: 18, y: 98.5}
+        - {x: 3, y: 99.5}
+        - {x: 2, y: 100.5}
+        - {x: -17, y: 103.5}
+        - {x: -42, y: 107.5}
+        - {x: -49, y: 108.5}
+        - {x: -62, y: 110.5}
+        - {x: -69, y: 111.5}
+        - {x: -77, y: 112.5}
+        - {x: -157, y: 112.5}
+        - {x: -175, y: 110.5}
+        - {x: -182, y: 109.5}
+        - {x: -190, y: 108.5}
+        - {x: -203, y: 106.5}
+        - {x: -210, y: 105.5}
+        - {x: -222, y: 103.5}
+        - {x: -229, y: 102.5}
+        - {x: -235, y: 101.5}
+        - {x: -256, y: 98.5}
+        - {x: -256, y: -112.5}
+        - {x: 256, y: -112.5}
+        - {x: 256, y: 98.5}
+        - {x: 236, y: 96.5}
+    - name: 2DLettersPlatforms3_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 238, y: 95}
+        - {x: 223, y: 95}
+        - {x: 206, y: 94}
+        - {x: 201, y: 98}
+        - {x: 189, y: 97}
+        - {x: 181, y: 99}
+        - {x: 169, y: 98}
+        - {x: 153, y: 95}
+        - {x: 146, y: 101}
+        - {x: 136, y: 101}
+        - {x: 128, y: 93}
+        - {x: 122, y: 96}
+        - {x: 94, y: 95}
+        - {x: 54, y: 95}
+        - {x: 42, y: 98}
+        - {x: 28, y: 94}
+        - {x: 1, y: 96}
+        - {x: -6, y: 101}
+        - {x: -17, y: 104}
+        - {x: -30, y: 105}
+        - {x: -45, y: 105}
+        - {x: -74, y: 107}
+        - {x: -75, y: 111}
+        - {x: -117, y: 111}
+        - {x: -124, y: 110}
+        - {x: -126, y: 111}
+        - {x: -149, y: 111}
+        - {x: -167, y: 106}
+        - {x: -185, y: 106}
+        - {x: -195, y: 102}
+        - {x: -199, y: 105}
+        - {x: -216, y: 104}
+        - {x: -221, y: 103}
+        - {x: -236, y: 105}
+        - {x: -247, y: 100}
+        - {x: -254, y: 96}
+        - {x: -256, y: 93}
+        - {x: -256, y: -111}
+        - {x: 256, y: -111}
+        - {x: 256, y: 92}
+        - {x: 251, y: 97}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
