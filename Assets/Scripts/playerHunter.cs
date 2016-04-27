@@ -5,7 +5,7 @@ public class playerHunter : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     public bool grounded;
-    public bool faceRight = true;
+    public bool faceRight,movable = true;
     bool isShoot = false;
     bool PowerShot = false;
 
@@ -18,7 +18,7 @@ public class playerHunter : MonoBehaviour {
 
     AudioSource SlashS;
     public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab;
-    public float shootForce,slashForce, slashPower;
+	public float shootForce, shootPower ,slashForce, slashPower ,TrapForce, TrapPower;
     public KeyCode trap;
     private Animator anim;
 
@@ -50,9 +50,9 @@ public class playerHunter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Fall();
-        Jump();
-        Move();
+		Jump();
+        //Fall();
+
         MoveMachineMouse();
 
         if ((Input.GetMouseButton(0)) && (ScoreController.skillCD0 == 0))
@@ -76,6 +76,13 @@ public class playerHunter : MonoBehaviour {
     void FixedUpdate()
     {
 
+		if (movable) {
+			speedx = Input.GetAxis ("Horizontal");
+
+			rb2d.velocity = new Vector2 (speedx * maxSpeed, rb2d.velocity.y);
+			anim.SetFloat ("Speed", Mathf.Abs (rb2d.velocity.x));
+		}
+		//Move();
 
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
@@ -94,24 +101,25 @@ public class playerHunter : MonoBehaviour {
         }
     }
 
-    void Move()
+    /*void Move()
     {
-        speedx = Input.GetAxis("Horizontal");
+		if (movable) {
+			speedx = Input.GetAxis ("Horizontal");
 
-        rb2d.velocity = new Vector2(speedx * maxSpeed, rb2d.velocity.y);
-        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
-
-    }
+			rb2d.velocity = new Vector2 (speedx * maxSpeed, rb2d.velocity.y);
+			anim.SetFloat ("Speed", Mathf.Abs (rb2d.velocity.x));
+		}
+    }*/
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.W) && grounded)
+        if (Input.GetKeyDown(KeyCode.W) && grounded && movable)
         {
             rb2d.AddForce(Vector2.up * jumpSpeed);
         }
     }
 
-    void Fall()
+    /*void Fall()
     {
         if (!grounded)
         {
@@ -129,7 +137,7 @@ public class playerHunter : MonoBehaviour {
             fallSpeed = 0;
         }
 
-    }
+    }*/
 
     void Flip()
     {
@@ -213,7 +221,15 @@ public class playerHunter : MonoBehaviour {
 			// instantiat 1 bullet
 
 			var Arrow = (GameObject)Instantiate (ArrowPrefab, bow.position, bow.rotation);
-			Arrow.GetComponent<Rigidbody2D> ().velocity = bow.TransformDirection (new Vector3 (0, shootForce, 0));
+		if (faceRight)
+		{
+			shootPower = shootForce + (rb2d.velocity.x)/2;
+		}
+		else if (!faceRight)
+		{
+			shootPower = shootForce - (rb2d.velocity.x)/2;
+		}
+			Arrow.GetComponent<Rigidbody2D> ().velocity = bow.TransformDirection (new Vector3 (0, shootPower, 0));
 			//Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 			ScoreController.skillCD0 = 1f;
 			ScoreController.skillCD2 = 0.5f;
@@ -232,7 +248,15 @@ public class playerHunter : MonoBehaviour {
         // instantiat 1 bullet
 
         var ArrowSuper = (GameObject)Instantiate(ArrowSuperPrefab, bow.position, bow.rotation);
-        ArrowSuper.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector3(0,		 shootForce*5/2, 0));
+		if (faceRight)
+		{
+			shootPower = shootForce + (rb2d.velocity.x)/2;
+		}
+		else if (!faceRight)
+		{
+			shootPower = shootForce - (rb2d.velocity.x)/2;
+		}
+		ArrowSuper.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector3(0, shootPower*5/2, 0));
         //Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 
         ScoreController.skillCD1 = 10f;
@@ -249,17 +273,18 @@ public class playerHunter : MonoBehaviour {
 
 
         // instantiat 1 bullet
+		SlashS.Play();
 
         var Slash = (GameObject)Instantiate(SlashPrefab, bow.position, bow.rotation);
         if (faceRight)
         {
-            slashPower = slashForce + speedx;
+			slashPower = slashForce + (rb2d.velocity.x);
         }
         else if (!faceRight)
         {
-            slashPower = slashForce - speedx;
+			slashPower = slashForce - (rb2d.velocity.x);
         }
-        Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));
+		Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));
         
         ScoreController.skillCD0 = 0.5f;
         ScoreController.skillCD2 = 0.5f;
@@ -267,9 +292,44 @@ public class playerHunter : MonoBehaviour {
 
     void Trap()
     {
+		if (faceRight) {
+			bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
+		}else if (!faceRight) {
+			bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
+		}
 
-        Instantiate(TrapPrefab, transform.position - new Vector3(0, 0.8f, 0) , Quaternion.identity);
+
+		// instantiat 1 bullet
+
+		var BearTrap = (GameObject)Instantiate(TrapPrefab, bow.position, Quaternion.identity);
+		if (faceRight)
+		{
+			TrapPower = TrapForce + (rb2d.velocity.x);
+		}
+		else if (!faceRight)
+		{
+			TrapPower = TrapForce - (rb2d.velocity.x);
+		}
+		BearTrap.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, TrapPower));
 
         ScoreController.skillCD3 = 20f;
     }
+
+	void OnTriggerEnter2D(Collider2D hitInfo)
+	{
+		if (hitInfo.gameObject.tag == "bearTrap")
+		{
+			SlashS.Play();
+			movable = false;
+			rb2d.velocity = new Vector2 (0, 0);
+			StartCoroutine (immovable());
+		}
+	}
+
+	IEnumerator immovable(){
+		yield return new WaitForSeconds (3);
+		movable = true;
+		SlashS.pitch = 1.5f;
+		SlashS.Play();
+	}
 }

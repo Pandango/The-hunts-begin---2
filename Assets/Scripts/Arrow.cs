@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Arrow : MonoBehaviour {
 
-AudioSource Shot,Fire;
+AudioSource Shot,Hit;
 
 	// Use this for initialization
 	void Start () {
 	 	AudioSource[] audios = GetComponents<AudioSource>();
         Shot = audios[0];
-        Fire = audios[1];
+        Hit = audios[1];
         Shot.Play();
 	}
 	
@@ -20,8 +20,9 @@ AudioSource Shot,Fire;
 
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
-        if ((hitInfo.gameObject.tag != "Player") && (hitInfo.gameObject.tag != "Arrow") && (hitInfo.gameObject.tag != "ArrowSuper") && (hitInfo.gameObject.tag != "Slash"))
+		if ((hitInfo.gameObject.tag != "Arrow") && (hitInfo.gameObject.tag != "ArrowSuper") && (hitInfo.gameObject.tag != "Slash"))
         {
+			Hit.Play();
             Destroy(this.gameObject.GetComponent<Rigidbody2D>());
             Destroy(this.gameObject.GetComponent<Collider2D>());
         }

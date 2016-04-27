@@ -3,13 +3,10 @@ using System.Collections;
 
 public class ArrowStuck : MonoBehaviour {
 
-	AudioSource Fire;
 
-    float depth = 0.30f; // how deep the arrow will enter the body
+    float depth = 0.1f; // how deep the arrow will enter the body
 
 	void Start () {
-	 	AudioSource[] audios = GetComponents<AudioSource>();
-        Fire = audios[0];
     }
 
     void OnCollisionEnter2D(Collision2D hitInfo)
@@ -17,8 +14,8 @@ public class ArrowStuck : MonoBehaviour {
         if ((hitInfo.gameObject.tag == "Arrow") || (hitInfo.gameObject.tag == "ArrowSuper"))
         {
             hitInfo.rigidbody.isKinematic = true; // stop physics control 
-            hitInfo.transform.Translate(depth * Vector3.forward); // move the arrow deep inside 
-            hitInfo.transform.parent = transform; // stuck the arrow to the enemy
+            hitInfo.transform.Translate(depth * Vector2.up); // move the arrow deep inside 
+			hitInfo.transform.parent = transform; // stuck the arrow to the enemy
         }
     }
 }
