@@ -3,9 +3,9 @@ using System.Collections;
 
 public class playerHunter : MonoBehaviour {
 
-    private CharacterController characterContoller;
-    public bool isGrounded;
-    bool faceRight = true;
+    private Rigidbody2D rb2d;
+    public bool grounded;
+    public bool faceRight = true;
     bool isShoot = false;
     bool PowerShot = false;
 
@@ -20,19 +20,24 @@ public class playerHunter : MonoBehaviour {
     public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab;
     public float shootForce,slashForce, slashPower;
     public KeyCode trap;
+    private Animator anim;
 
+    public Transform groundCheck;
+    float groundRadius = 0.2f;
+    public LayerMask whatIsGround;
 
-	Transform bow,rotate,Leg = null;
+    Transform bow,rotate,Leg = null;
 
-    public float gravity = 15.5f;
-    private float fallSpeed;
-    public float jumpSpeed = 5;
-    public float moveSpeed = 5;
+    public float maxSpeed = 300f;
+    public float jumpSpeed = 300f;
+    public float fallSpeed = 10f;
+    public float Speed = 2f;
     private float speedx;
-    
+
     // Use this for initialization
     void Start () {
-        characterContoller = GetComponent<CharacterController>();
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+        anim = gameObject.GetComponent<Animator>();
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
 
@@ -45,12 +50,10 @@ public class playerHunter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        MoveMachineMouse();
-        groundCheck();
         Fall();
         Jump();
         Move();
-
+        MoveMachineMouse();
 
         if ((Input.GetMouseButton(0)) && (ScoreController.skillCD0 == 0))
         {
@@ -62,7 +65,6 @@ public class playerHunter : MonoBehaviour {
         }
         if ((Input.GetMouseButton(1)) && (ScoreController.skillCD2 == 0))
         {
-        	SlashS.Play();
             Slash();
         }
         if ((Input.GetKeyDown(trap)) && (ScoreController.skillCD3 == 0))
@@ -71,40 +73,62 @@ public class playerHunter : MonoBehaviour {
         }
     }
 
-    void groundCheck()
+    void FixedUpdate()
     {
-        //using raycast need start position/direction/magnitude,lenght
-        isGrounded = (Physics.Raycast(transform.position, -transform.up, characterContoller.height / 1.8f));
+
+
+
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+        anim.SetBool("Grounded", grounded);
+
+
+
+        if (speedx > 0 && !faceRight)
+        {
+            Flip();
+
+        }
+        else if (speedx < 0 && faceRight)
+        {
+            Flip();
+        }
     }
 
     void Move()
     {
         speedx = Input.GetAxis("Horizontal");
-        if(speedx != 0)
-        {
-            characterContoller.Move(new Vector3(speedx, 0) * moveSpeed * Time.deltaTime);
-        }
+
+        rb2d.velocity = new Vector2(speedx * maxSpeed, rb2d.velocity.y);
+        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+
     }
 
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.W) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.W) && grounded)
         {
-            fallSpeed = -jumpSpeed;
+            rb2d.AddForce(Vector2.up * jumpSpeed);
         }
     }
 
     void Fall()
     {
-        if (!isGrounded)
+        if (!grounded)
         {
-            fallSpeed += gravity * Time.deltaTime;
+            fallSpeed += Time.deltaTime;
         }
-        else
+
+        if (!grounded && fallSpeed >= 0.6f)
         {
-            if (fallSpeed > 0) fallSpeed = 0;
+
+            rb2d.AddForce(Vector2.up * jumpSpeed * -fallSpeed / 6);
+
         }
-        characterContoller.Move(new Vector3(0, -fallSpeed*Time.deltaTime));
+        else if (grounded)
+        {
+            fallSpeed = 0;
+        }
+
     }
 
     void Flip()
@@ -189,7 +213,7 @@ public class playerHunter : MonoBehaviour {
 			// instantiat 1 bullet
 
 			var Arrow = (GameObject)Instantiate (ArrowPrefab, bow.position, bow.rotation);
-			Arrow.GetComponent<Rigidbody> ().velocity = bow.TransformDirection (new Vector3 (0, shootForce, 0));
+			Arrow.GetComponent<Rigidbody2D> ().velocity = bow.TransformDirection (new Vector3 (0, shootForce, 0));
 			//Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 			ScoreController.skillCD0 = 1f;
 			ScoreController.skillCD2 = 0.5f;
@@ -208,7 +232,7 @@ public class playerHunter : MonoBehaviour {
         // instantiat 1 bullet
 
         var ArrowSuper = (GameObject)Instantiate(ArrowSuperPrefab, bow.position, bow.rotation);
-        ArrowSuper.GetComponent<Rigidbody>().velocity = bow.TransformDirection(new Vector3(0,		 shootForce*5/2, 0));
+        ArrowSuper.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector3(0,		 shootForce*5/2, 0));
         //Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 
         ScoreController.skillCD1 = 10f;
@@ -229,13 +253,13 @@ public class playerHunter : MonoBehaviour {
         var Slash = (GameObject)Instantiate(SlashPrefab, bow.position, bow.rotation);
         if (faceRight)
         {
-            slashPower = slashForce + (speedx * moveSpeed);
+            slashPower = slashForce + speedx;
         }
         else if (!faceRight)
         {
-            slashPower = slashForce - (speedx * moveSpeed);
+            slashPower = slashForce - speedx;
         }
-        Slash.GetComponent<Rigidbody>().velocity = bow.TransformDirection(new Vector3(0, slashPower, 0));
+        Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));
         
         ScoreController.skillCD0 = 0.5f;
         ScoreController.skillCD2 = 0.5f;

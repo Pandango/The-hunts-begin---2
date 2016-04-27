@@ -18,13 +18,12 @@ AudioSource Shot,Fire;
 	
 	}
 
-    void OnCollisionEnter(Collision hitInfo)
+    void OnCollisionEnter2D(Collision2D hitInfo)
     {
         if ((hitInfo.gameObject.tag != "Player") && (hitInfo.gameObject.tag != "Arrow") && (hitInfo.gameObject.tag != "ArrowSuper") && (hitInfo.gameObject.tag != "Slash"))
         {
-        	Fire.Play();
-            Destroy(this.gameObject.GetComponent<Rigidbody>());
-            Destroy(this.gameObject.GetComponent<Collider>());
+            Destroy(this.gameObject.GetComponent<Rigidbody2D>());
+            Destroy(this.gameObject.GetComponent<Collider2D>());
         }
     }
 }
