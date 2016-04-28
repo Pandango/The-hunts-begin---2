@@ -26,7 +26,7 @@ public class playerHunter : MonoBehaviour {
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
 
-    Transform bow,rotate,Leg = null;
+    Transform bow,rotate,Leg,Collider = null;
 
     public float maxSpeed = 300f;
     public float jumpSpeed = 300f;
@@ -159,7 +159,15 @@ public class playerHunter : MonoBehaviour {
         theScale.x *= -1;
 		Leg.localScale = theScale;
 
-		/*
+
+        if (Collider == null)
+            Collider = gameObject.transform.Find("MainRotatePoint/playerCollider");
+
+        Vector3 ColliderScale = Collider.localScale;
+        ColliderScale.x *= -1;
+        Collider.localScale = ColliderScale;
+
+        /*
 		Vector3 TopScale = spritePic.localScale;
 		Quaternion TopRotate = spritePic.localRotation;
 		//TopScale.x *= -1;
