@@ -11,8 +11,6 @@ public class playerHunter : MonoBehaviour {
 
 	public Renderer spriteR, spriteL ;
 
-	float ab=1f;
-
     [SerializeField]
     bool isEnter = false;
 
@@ -20,7 +18,7 @@ public class playerHunter : MonoBehaviour {
     public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab;
 	public float shootForce, shootPower ,slashForce, slashPower ,TrapForce, TrapPower;
     public KeyCode trap;
-    private Animator anim;
+    private Animator animTop,animLeg;
 
     public Transform groundCheck;
     float groundRadius = 0.2f;
@@ -37,7 +35,7 @@ public class playerHunter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        anim = gameObject.GetComponent<Animator>();
+		animLeg = gameObject.transform.Find("LEGS").GetComponent<Animator>();
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
 
@@ -51,7 +49,7 @@ public class playerHunter : MonoBehaviour {
 	void Update () {
 
 		Jump();
-        //Fall();
+        Fall();
 
         MoveMachineMouse();
 
@@ -77,16 +75,17 @@ public class playerHunter : MonoBehaviour {
     {
 
 		if (movable) {
+
 			speedx = Input.GetAxis ("Horizontal");
 
 			rb2d.velocity = new Vector2 (speedx * maxSpeed, rb2d.velocity.y);
-			anim.SetFloat ("Speed", Mathf.Abs (rb2d.velocity.x));
+
 		}
 		//Move();
-
+		animLeg.SetFloat ("Speed", Mathf.Abs (rb2d.velocity.x));
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-        anim.SetBool("Grounded", grounded);
+        //anim.SetBool("Grounded", grounded);
 
 
 
@@ -119,7 +118,7 @@ public class playerHunter : MonoBehaviour {
         }
     }
 
-    /*void Fall()
+    void Fall()
     {
         if (!grounded)
         {
@@ -129,7 +128,7 @@ public class playerHunter : MonoBehaviour {
         if (!grounded && fallSpeed >= 0.6f)
         {
 
-            rb2d.AddForce(Vector2.up * jumpSpeed * -fallSpeed / 6);
+            rb2d.AddForce(Vector2.up * jumpSpeed * -fallSpeed / 20);
 
         }
         else if (grounded)
@@ -137,7 +136,7 @@ public class playerHunter : MonoBehaviour {
             fallSpeed = 0;
         }
 
-    }*/
+    }
 
     void Flip()
     {
@@ -165,6 +164,7 @@ public class playerHunter : MonoBehaviour {
 
         Vector3 ColliderScale = Collider.localScale;
         ColliderScale.x *= -1;
+		ColliderScale.y *= 1;
         Collider.localScale = ColliderScale;
 
         /*
@@ -201,17 +201,15 @@ public class playerHunter : MonoBehaviour {
         transform.rotation = new Quaternion(0, 0, rot.z -0.1f, rot.w - 0.1f);*/
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		rotate.rotation = Quaternion.LookRotation(Vector3.forward , (mousePos - transform.position)*ab );
+		rotate.rotation = Quaternion.LookRotation(Vector3.forward , (mousePos - transform.position) );
 
 
         if (mousePos.x > transform.position.x && !faceRight)
         {
-			ab = 1f;
             Flip();
         }
         else if (mousePos.x < transform.position.x && faceRight)
         {
-			ab = 0.5f;
 			Flip();
         }
 

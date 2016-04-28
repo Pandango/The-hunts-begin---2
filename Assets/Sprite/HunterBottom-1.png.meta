@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c3b96794f7ad03d4787b62bde67baa1f
-timeCreated: 1461701950
+timeCreated: 1461867689
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,19 +58,19 @@ TextureImporter:
         y: 17
         width: 142
         height: 287
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.9}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 71, y: 134.5}
-        - {x: 70, y: 143.5}
-        - {x: -26, y: 143.5}
-        - {x: -71, y: 34.5}
-        - {x: -71, y: -143.5}
-        - {x: -43, y: -143.5}
-        - {x: -15, y: -114.5}
-        - {x: 70, y: -98.5}
-        - {x: 71, y: -97.5}
+      - - {x: 71, y: 19.700012}
+        - {x: 70, y: 28.700012}
+        - {x: -26, y: 28.700012}
+        - {x: -71, y: -80.29999}
+        - {x: -71, y: -258.3}
+        - {x: -43, y: -258.3}
+        - {x: -15, y: -229.29999}
+        - {x: 70, y: -213.29999}
+        - {x: 71, y: -212.29999}
     outline: []
   spritePackingTag: 
   userData: 
