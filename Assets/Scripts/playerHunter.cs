@@ -14,8 +14,8 @@ public class playerHunter : MonoBehaviour {
     [SerializeField]
     bool isEnter = false;
 
-    AudioSource SlashS;
-    public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab;
+    AudioSource SlashS,Bleed;
+    public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab , BloodPrefab;
 	public float shootForce, shootPower ,slashForce, slashPower ,TrapForce, TrapPower;
     public KeyCode trap;
 	private Animator animTopR,animTopL,animLeg;
@@ -40,6 +40,7 @@ public class playerHunter : MonoBehaviour {
 		animTopL = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-2").GetComponent<Animator>();
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
+		Bleed = audios[1];
 
 		spriteR.enabled = true;
 		spriteL.enabled = false;
@@ -331,13 +332,29 @@ public class playerHunter : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D hitInfo)
 	{
-		if (hitInfo.gameObject.tag == "bearTrap")
+		if (hitInfo.gameObject.tag == "bearTrap") //If player stepped on trap.....
 		{
 			SlashS.Play();
+
+			Bleed.Play();
+			var BloodSpill = (GameObject)Instantiate(BloodPrefab, hitInfo.transform.position, Quaternion.identity);
+			BloodSpill.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+			BloodSpill.transform.localScale = new Vector3(-BloodSpill.transform.localScale.x *(Mathf.Pow( -1 ,Random.Range(1, 3))) , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
+
 			movable = false;
 			GetComponent<objectInteractionController>().enabled = false;
 			rb2d.velocity = new Vector2 (0, 0);
 			StartCoroutine (immovable());
+		}
+
+		if (hitInfo.gameObject.tag == "Slash") { //If Player got slashed by the blade.....
+			Bleed.Play();
+			var BloodSpill = (GameObject)Instantiate(BloodPrefab, hitInfo.transform.position, Quaternion.identity);
+			BloodSpill.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3,3), Random.Range(-3,0));
+
+			if (hitInfo.transform.position.x < this.transform.position.x) {
+				BloodSpill.transform.localScale = new Vector3(-BloodSpill.transform.localScale.x , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
+			}
 		}
 	}
 
@@ -347,5 +364,22 @@ public class playerHunter : MonoBehaviour {
 		SlashS.pitch = 1.5f;
 		SlashS.Play();
 		GetComponent<objectInteractionController>().enabled = true;
+	}
+
+	void OnCollisionEnter2D(Collision2D hitInfo)
+	{
+		if ((hitInfo.gameObject.tag == "Arrow") || (hitInfo.gameObject.tag == "ArrowSuper")) //If Player was shot.....
+		{
+			Bleed.Play();
+			var BloodSpill = (GameObject)Instantiate(BloodPrefab, hitInfo.transform.position, Quaternion.identity);
+			BloodSpill.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3,3), Random.Range(-3,0));
+
+			if (hitInfo.transform.position.x < this.transform.position.x) {
+				BloodSpill.transform.localScale = new Vector3(-BloodSpill.transform.localScale.x , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
+			}
+			if (hitInfo.gameObject.tag == "ArrowSuper") {
+				BloodSpill.transform.localScale = new Vector3(BloodSpill.transform.localScale.x *1.5f , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
+			}
+		}
 	}
 }
