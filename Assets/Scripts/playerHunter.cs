@@ -18,7 +18,7 @@ public class playerHunter : MonoBehaviour {
     public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab;
 	public float shootForce, shootPower ,slashForce, slashPower ,TrapForce, TrapPower;
     public KeyCode trap;
-    private Animator animTop,animLeg;
+	private Animator animTopR,animTopL,animLeg;
 
     public Transform groundCheck;
     float groundRadius = 0.2f;
@@ -36,6 +36,8 @@ public class playerHunter : MonoBehaviour {
     void Start () {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
 		animLeg = gameObject.transform.Find("LEGS").GetComponent<Animator>();
+		animTopR = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-1").GetComponent<Animator>();
+		animTopL = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-2").GetComponent<Animator>();
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
 
@@ -219,8 +221,10 @@ public class playerHunter : MonoBehaviour {
     	{
 			if (faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
+				animTopR.SetTrigger ("SHOOT");
 			} else if (!faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
+				animTopL.SetTrigger ("SHOOT");
 			}
 		
 
@@ -246,8 +250,10 @@ public class playerHunter : MonoBehaviour {
 
 			if (faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
+				animTopR.SetTrigger ("SHOOT");
 			}else if (!faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
+				animTopL.SetTrigger ("SHOOT");
 			}
 
 
@@ -273,24 +279,26 @@ public class playerHunter : MonoBehaviour {
 
 			if (faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
+				animTopR.SetTrigger ("SLASH");
 			}else if (!faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
+				animTopL.SetTrigger ("SLASH");
 			}
 
 
         // instantiat 1 bullet
 		SlashS.Play();
 
-        var Slash = (GameObject)Instantiate(SlashPrefab, bow.position, bow.rotation);
+        /*var Slash = (GameObject)Instantiate(SlashPrefab, bow.position, bow.rotation);
         if (faceRight)
         {
-			slashPower = slashForce + (rb2d.velocity.x);
+			slashPower = rb2d.velocity.x;
         }
         else if (!faceRight)
         {
-			slashPower = slashForce - (rb2d.velocity.x);
+			slashPower = -rb2d.velocity.x;
         }
-		Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));
+		Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));*/
         
         ScoreController.skillCD0 = 0.5f;
         ScoreController.skillCD2 = 0.5f;
