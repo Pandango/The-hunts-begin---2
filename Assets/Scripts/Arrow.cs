@@ -12,16 +12,14 @@ AudioSource Shot,Hit;
         Hit = audios[1];
         Shot.Play();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+
 
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
 		if ((hitInfo.gameObject.tag != "Arrow") && (hitInfo.gameObject.tag != "ArrowSuper") && (hitInfo.gameObject.tag != "Slash"))
         {
+			GetComponent<ArrowFlying>().enabled = false;
 			Hit.Play();
             Destroy(this.gameObject.GetComponent<Rigidbody2D>());
             Destroy(this.gameObject.GetComponent<Collider2D>());

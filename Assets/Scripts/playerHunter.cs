@@ -327,6 +327,7 @@ public class playerHunter : MonoBehaviour {
 		{
 			SlashS.Play();
 			movable = false;
+			GetComponent<objectInteractionController>().enabled = false;
 			rb2d.velocity = new Vector2 (0, 0);
 			StartCoroutine (immovable());
 		}
@@ -337,5 +338,6 @@ public class playerHunter : MonoBehaviour {
 		movable = true;
 		SlashS.pitch = 1.5f;
 		SlashS.Play();
+		GetComponent<objectInteractionController>().enabled = true;
 	}
 }
