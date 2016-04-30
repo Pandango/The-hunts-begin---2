@@ -17,7 +17,7 @@ public class playerHunter : MonoBehaviour {
     [SerializeField]
     bool isEnter = false;
 
-    AudioSource SlashS,Bleed;
+    AudioSource SlashS,Bleed,SoulRetrieve;
     public GameObject ArrowPrefab,ArrowSuperPrefab,SlashPrefab, TrapPrefab , BloodPrefab;
 	public float shootForce, shootPower ,slashForce, slashPower ,TrapForce, TrapPower;
     public KeyCode trap;
@@ -45,6 +45,7 @@ public class playerHunter : MonoBehaviour {
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
 		Bleed = audios[1];
+		SoulRetrieve = audios[2];
 
 		spriteR.enabled = true;
 		spriteL.enabled = false;
@@ -345,6 +346,7 @@ public class playerHunter : MonoBehaviour {
 			var BloodSpill = (GameObject)Instantiate(BloodPrefab, hitInfo.transform.position, Quaternion.identity);
 			BloodSpill.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 			BloodSpill.transform.localScale = new Vector3(-BloodSpill.transform.localScale.x *(Mathf.Pow( -1 ,Random.Range(1, 3))) , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
+			playerStats.currentHp -= 25;
 
 			movable = false;
 			GetComponent<objectInteractionController>().enabled = false;
@@ -353,7 +355,7 @@ public class playerHunter : MonoBehaviour {
 		}
 
 		if (hitInfo.gameObject.tag == "Slash") { //If Player got slashed by the blade.....
-            playerStats.currentHp -= 50;
+            playerStats.currentHp -= 25;
             Bleed.Play();
 			var BloodSpill = (GameObject)Instantiate(BloodPrefab, hitInfo.transform.position, Quaternion.identity);
 			BloodSpill.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3,3), Random.Range(-3,0));
@@ -364,7 +366,8 @@ public class playerHunter : MonoBehaviour {
 		}
         if (hitInfo.gameObject.tag == "Soul")
         {
-            int soul = hitInfo.GetComponent<soul>().SoulCount;
+			SoulRetrieve.Play();
+            float soul = hitInfo.GetComponent<soul>().SoulCount;
             playerStats.PlayerCurrentSoul += soul;
             
         }

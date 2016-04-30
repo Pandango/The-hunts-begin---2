@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class soul : MonoBehaviour {
-    public int SoulCount;
+    public float SoulCount = 1;
     public GameObject playerSoul;
    
     //private playerStat playerStats;
     // Use this for initialization
     void Start () {
-        SoulCount = 1;
+		SoulCount = (transform.localScale.x)*4f;
 
     }
 	
@@ -19,7 +19,7 @@ public class soul : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if(hitInfo.gameObject.tag == "Player")
+		if(hitInfo.gameObject.tag == "Player" || hitInfo.gameObject.tag == "Slash")
         {
             
             Destroy(playerSoul);
