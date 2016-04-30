@@ -1,0 +1,328 @@
+fileFormatVersion: 2
+guid: 37d4eed748aa9414882b1fec058358f8
+timeCreated: 1461868010
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Hunter-1_SpriteSheet_RUN(LEG)_0
+    21300002: Hunter-1_SpriteSheet_RUN(LEG)_1
+    21300004: Hunter-1_SpriteSheet_RUN(LEG)_2
+    21300006: Hunter-1_SpriteSheet_RUN(LEG)_3
+    21300008: Hunter-1_SpriteSheet_RUN(LEG)_4
+    21300010: Hunter-1_SpriteSheet_RUN(LEG)_5
+    21300012: Hunter-1_SpriteSheet_RUN(LEG)_6
+    21300014: Hunter-1_SpriteSheet_RUN(LEG)_7
+    21300016: Hunter-1_SpriteSheet_RUN(LEG)_8
+    21300018: Hunter-1_SpriteSheet_RUN(LEG)_9
+    21300020: Hunter-1_SpriteSheet_RUN(LEG)_10
+    21300022: Hunter-1_SpriteSheet_RUN(LEG)_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -5
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 100
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 2553
+        width: 238
+        height: 253
+      alignment: 9
+      pivot: {x: 0.59, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84.58, y: -221.6399}
+        - {x: 97.58, y: -217.6399}
+        - {x: 97.58, y: -71.63989}
+        - {x: 72.58, y: 30.360107}
+        - {x: -31.419998, y: 30.360107}
+        - {x: -140.42, y: -117.63989}
+        - {x: -140.42, y: -201.6399}
+        - {x: -123.42, y: -222.6399}
+        - {x: -83.42, y: -222.6399}
+        - {x: -11.419998, y: -111.63989}
+        - {x: 1.5800018, y: -87.63989}
+        - {x: 17.580002, y: -184.6399}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_1
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 2564
+        width: 253
+        height: 242
+      alignment: 9
+      pivot: {x: 0.66, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 50.02002, y: 29.04004}
+        - {x: -53.97998, y: 29.04004}
+        - {x: -166.97998, y: -94.95996}
+        - {x: -166.97998, y: -149.95996}
+        - {x: -158.97998, y: -159.95996}
+        - {x: -145.97998, y: -152.95996}
+        - {x: -135.97998, y: -142.95996}
+        - {x: 39.02002, y: -212.95996}
+        - {x: 86.02002, y: -212.95996}
+        - {x: 86.02002, y: -187.95996}
+        - {x: 75.02002, y: -66.95996}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_2
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 2560
+        width: 228
+        height: 250
+      alignment: 9
+      pivot: {x: 0.66, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 47.52002, y: 27.5}
+        - {x: -98.47998, y: 27.5}
+        - {x: -150.47998, y: -31.5}
+        - {x: -150.47998, y: -118.5}
+        - {x: 20.52002, y: -215.5}
+        - {x: 50.52002, y: -222.5}
+        - {x: 76.52002, y: -222.5}
+        - {x: 77.52002, y: -221.5}
+        - {x: 77.52002, y: -179.5}
+        - {x: 50.52002, y: 25.5}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_3
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 2549
+        width: 174
+        height: 257
+      alignment: 9
+      pivot: {x: 0.68, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -118.31995, y: -135.72998}
+        - {x: -101.31995, y: -143.72998}
+        - {x: -28.319946, y: -220.72998}
+        - {x: 3.6800537, y: -228.72998}
+        - {x: 55.680054, y: -228.72998}
+        - {x: 55.680054, y: 28.27002}
+        - {x: -36.319946, y: 28.27002}
+        - {x: -118.31995, y: -15.72998}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_4
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 2056
+        width: 158
+        height: 255
+      alignment: 9
+      pivot: {x: 0.47, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.26001, y: 28.050049}
+        - {x: -74.26001, y: -104.94995}
+        - {x: -74.26001, y: -205.94995}
+        - {x: -52.26001, y: -226.94995}
+        - {x: -25.26001, y: -226.94995}
+        - {x: -23.26001, y: -224.94995}
+        - {x: 83.73999, y: -135.94995}
+        - {x: 83.73999, y: -8.949951}
+        - {x: 70.73999, y: 28.050049}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_5
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 2060
+        width: 221
+        height: 246
+      alignment: 9
+      pivot: {x: 0.57, y: 0.88}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.96997, y: 29.52002}
+        - {x: -37.96997, y: 27.52002}
+        - {x: -125.96997, y: -149.47998}
+        - {x: -125.96997, y: -173.47998}
+        - {x: -102.96997, y: -208.47998}
+        - {x: -86.96997, y: -206.47998}
+        - {x: -35.96997, y: -216.47998}
+        - {x: 89.03003, y: -216.47998}
+        - {x: 95.03003, y: -214.47998}
+        - {x: 95.03003, y: -38.47998}
+        - {x: 61.03003, y: 29.52002}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_6
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 2052
+        width: 265
+        height: 253
+      alignment: 9
+      pivot: {x: 0.58, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 107.30005, y: -73.16992}
+        - {x: 56.30005, y: 27.830078}
+        - {x: -22.699951, y: 27.830078}
+        - {x: -41.69995, y: 22.830078}
+        - {x: -153.69995, y: -114.16992}
+        - {x: -153.69995, y: -190.16992}
+        - {x: -151.69995, y: -209.16992}
+        - {x: -29.699951, y: -225.16992}
+        - {x: 111.30005, y: -225.16992}
+        - {x: 111.30005, y: -203.16992}
+        - {x: 99.30005, y: -193.16992}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_7
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 2044
+        width: 274
+        height: 262
+      alignment: 9
+      pivot: {x: 0.56, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.439941, y: 28.820068}
+        - {x: -52.43994, y: -20.179932}
+        - {x: -49.43994, y: -49.17993}
+        - {x: -133.43994, y: -34.17993}
+        - {x: -153.43994, y: -76.17993}
+        - {x: -153.43994, y: -103.17993}
+        - {x: 21.560059, y: -233.17993}
+        - {x: 115.56006, y: -233.17993}
+        - {x: 120.56006, y: -225.17993}
+        - {x: 120.56006, y: -184.17993}
+        - {x: 56.56006, y: 28.820068}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1529
+        width: 190
+        height: 278
+      alignment: 9
+      pivot: {x: 0.62, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -117.8, y: -26.420044}
+        - {x: -117.8, y: -99.420044}
+        - {x: -21.800003, y: -244.42004}
+        - {x: -8.800003, y: -247.42004}
+        - {x: 69.2, y: -247.42004}
+        - {x: 72.2, y: -246.42004}
+        - {x: 72.2, y: -70.420044}
+        - {x: 67.2, y: 30.579956}
+        - {x: -20.800003, y: 30.579956}
+        - {x: -27.800003, y: 16.579956}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_9
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 1525
+        width: 152
+        height: 282
+      alignment: 9
+      pivot: {x: 0.54, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.080017, y: 31.02002}
+        - {x: -39.080017, y: 30.02002}
+        - {x: -82.08002, y: -74.97998}
+        - {x: -82.08002, y: -121.97998}
+        - {x: -79.08002, y: -122.97998}
+        - {x: -64.08002, y: -216.97998}
+        - {x: -29.080017, y: -250.97998}
+        - {x: 15.919983, y: -250.97998}
+        - {x: 69.91998, y: -157.97998}
+        - {x: 69.91998, y: 22.02002}
+        - {x: 67.91998, y: 31.02002}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_10
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 1530
+        width: 182
+        height: 275
+      alignment: 9
+      pivot: {x: 0.59, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 74.619995, y: -133.5}
+        - {x: 74.619995, y: -29.5}
+        - {x: 59.619995, y: 27.5}
+        - {x: -25.380005, y: 27.5}
+        - {x: -38.380005, y: 23.5}
+        - {x: -107.380005, y: -177.5}
+        - {x: -107.380005, y: -210.5}
+        - {x: -94.380005, y: -239.5}
+        - {x: -83.380005, y: -247.5}
+        - {x: -54.380005, y: -247.5}
+        - {x: -48.380005, y: -245.5}
+        - {x: -51.380005, y: -227.5}
+        - {x: -3.380005, y: -208.5}
+        - {x: 1.6199951, y: -200.5}
+    - name: Hunter-1_SpriteSheet_RUN(LEG)_11
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 1541
+        width: 210
+        height: 264
+      alignment: 9
+      pivot: {x: 0.6, y: 0.89}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 29.04004}
+        - {x: -126, y: -152.95996}
+        - {x: -126, y: -207.95996}
+        - {x: -114, y: -224.95996}
+        - {x: -97, y: -234.95996}
+        - {x: 63, y: -234.95996}
+        - {x: 84, y: -206.95996}
+        - {x: 84, y: 23.04004}
+        - {x: 72, y: 29.04004}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

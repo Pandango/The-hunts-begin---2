@@ -3,8 +3,9 @@ using System.Collections;
 
 public class objectInteractionController : MonoBehaviour {
 
-    private CharacterController characterContoller;
-    SpriteRenderer playerRenderer;
+    private playerHunter player;
+    private Rigidbody2D rb2d;
+    public Renderer playerLeft,playerRight,playerLeg;
 
     [SerializeField]
     public bool isEnter = false;
@@ -17,8 +18,8 @@ public class objectInteractionController : MonoBehaviour {
 
     void Start()
     {
-        characterContoller = GetComponent<CharacterController>();
-        playerRenderer = GetComponent<SpriteRenderer>();
+        rb2d = GetComponent<Rigidbody2D>();        
+        player = gameObject.GetComponent<playerHunter>();
     }
 
     void Update(){
@@ -26,7 +27,7 @@ public class objectInteractionController : MonoBehaviour {
         EnterInCave();
     }
 
-    void OnTriggerEnter(Collider hitInfo)
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if (hitInfo.tag == "Cave")
         {
@@ -39,7 +40,20 @@ public class objectInteractionController : MonoBehaviour {
         }
     }
 
-    void OnTriggerExit(Collider hitInfo)
+    void OnTriggerStay2D(Collider2D hitInfo)
+    {
+        if (hitInfo.tag == "Cave")
+        {
+            isEnter = true;
+            caveName = hitInfo.name;
+        }
+        else if (hitInfo.tag == "Bush")
+        {
+            isEnterBush = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D hitInfo)
     {
         if (hitInfo.tag == "Cave")
         {
@@ -51,6 +65,7 @@ public class objectInteractionController : MonoBehaviour {
             isEnterBush = false;
         }
     }
+
 
     void EnterInCave()
     {
@@ -71,16 +86,25 @@ public class objectInteractionController : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.LeftControl) && isEnterBush && !isGetInBush)
         {
-            playerRenderer.sortingLayerName = "playerHide";
-            playerRenderer.enabled = false;
-            characterContoller.enabled = false;
+            rb2d.velocity = new Vector2(0, 0);
+            playerLeft.sortingLayerName = "playerHide";
+            playerRight.sortingLayerName = "playerHide";
+            playerLeg.sortingLayerName = "playerHide";
+            playerLeft.enabled = false;
+            playerRight.enabled = false;
+            playerLeg.enabled = false;
+            player.enabled = false;
             isGetInBush = true;
         }
         else if (Input.GetKeyDown(KeyCode.LeftControl) && isEnterBush && isGetInBush)
         {
-            playerRenderer.sortingLayerName = "player";
-            playerRenderer.enabled = true;
-            characterContoller.enabled = true;
+            playerLeft.sortingLayerName = "player";
+            playerRight.sortingLayerName = "player";
+            playerLeg.sortingLayerName = "player";
+            //playerLeft.enabled = true;
+            playerRight.enabled = true;
+            playerLeg.enabled = true;
+            player.enabled = true;
             isGetInBush = false;
         }
 
