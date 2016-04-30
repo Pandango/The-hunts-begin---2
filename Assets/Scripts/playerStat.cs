@@ -14,17 +14,13 @@ public class playerStat : MonoBehaviour
     //hp&sp test
     public int damage;
     //public float sp;
-<<<<<<< HEAD
-    public int MaxHp = 100;
-    public int currentHp;   
+//<<<<<<< HEAD
+	public float MaxHp = 100;
+	public float currentHp;   
     public float PlayerSoul;
     public float PlayerCurrentSoul = 1;
-=======
-    public float MaxHp = 100;
-    public float currentHp;   
-    public int PlayerSoul;
-    public int PlayerCurrentSoul = 1;
->>>>>>> origin/master
+
+//>>>>>>> origin/master
     public GameObject Player;
 	public GameObject SoulPrefabs , BloodPrefab;
     playerHunter PlayerHunter;
@@ -86,15 +82,15 @@ public class playerStat : MonoBehaviour
 
 		if((currentHp <= 0) && !DIE)
         {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 			DIE = true;
 			Destroy(this.gameObject.GetComponent<Collider2D>());
 			SoulDrop();
             //playerDeath();
-=======
+//=======
             hpBlank.SetActive(false);
             playerDeath();
->>>>>>> origin/master
+//>>>>>>> origin/master
         }
     }
     void playerDeath()
