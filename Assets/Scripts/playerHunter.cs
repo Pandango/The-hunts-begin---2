@@ -371,7 +371,18 @@ public class playerHunter : MonoBehaviour {
             playerStats.PlayerCurrentSoul += soul;
             
         }
+        if (hitInfo.gameObject.tag == "Potion")
+        {
 
+            playerStats.currentHp += 25;
+
+        }
+        if (hitInfo.gameObject.tag == "WaterBottom")
+        {
+
+            playerStats.currentHp -= 100;
+
+        }
     }
 
 	IEnumerator immovable(){
@@ -402,6 +413,7 @@ public class playerHunter : MonoBehaviour {
             {
                 playerStats.currentHp -= 25;
             }
-		}
+            
+        }
 	}
 }

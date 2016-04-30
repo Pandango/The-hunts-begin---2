@@ -6,18 +6,25 @@ using UnityEngine.SceneManagement;
 public class playerStat : MonoBehaviour
 {
 
-    //public Slider Healthbar;
+    public Slider Healthbar;
     //public Slider Staminabar;
-    //public GameObject hpBlank;
+    public GameObject hpBlank;
     //public GameObject spBlank;
     
     //hp&sp test
     public int damage;
     //public float sp;
+<<<<<<< HEAD
     public int MaxHp = 100;
     public int currentHp;   
     public float PlayerSoul;
     public float PlayerCurrentSoul = 1;
+=======
+    public float MaxHp = 100;
+    public float currentHp;   
+    public int PlayerSoul;
+    public int PlayerCurrentSoul = 1;
+>>>>>>> origin/master
     public GameObject Player;
 	public GameObject SoulPrefabs , BloodPrefab;
     playerHunter PlayerHunter;
@@ -35,10 +42,10 @@ public class playerStat : MonoBehaviour
 
         PlayerCurrentSoul = 1;
         currentHp = MaxHp;
-        //Healthbar.maxValue = MaxHp;
+        Healthbar.maxValue = currentHp;
+        //Healthbar.value = currentHp;
         //Staminabar.maxValue = MaxSp;
-
-        //Healthbar.value = MaxHp;
+        
         //Staminabar.value = MaxSp;
         PlayerHunter = GetComponent<playerHunter>();
         objInteractCtrl = GetComponent<objectInteractionController>();
@@ -71,17 +78,23 @@ public class playerStat : MonoBehaviour
 
     void currentHpCtrl()
     {
-        if(currentHp > MaxHp)
+        Healthbar.value = currentHp;
+        if (currentHp > MaxHp)
         {
             currentHp = MaxHp;
         }
 
 		if((currentHp <= 0) && !DIE)
         {
+<<<<<<< HEAD
 			DIE = true;
 			Destroy(this.gameObject.GetComponent<Collider2D>());
 			SoulDrop();
             //playerDeath();
+=======
+            hpBlank.SetActive(false);
+            playerDeath();
+>>>>>>> origin/master
         }
     }
     void playerDeath()

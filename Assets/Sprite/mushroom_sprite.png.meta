@@ -1,0 +1,257 @@
+fileFormatVersion: 2
+guid: 6257cd10431beba4284b4c6deecb8cda
+timeCreated: 1462046816
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mushroom_sprite_0
+    21300002: mushroom_sprite_1
+    21300004: mushroom_sprite_2
+    21300006: mushroom_sprite_3
+    21300008: mushroom_sprite_4
+    21300010: mushroom_sprite_5
+    21300012: mushroom_sprite_6
+    21300014: mushroom_sprite_7
+    21300016: mushroom_sprite_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mushroom_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51, y: 58}
+        - {x: -80, y: 58}
+        - {x: -89, y: 34}
+        - {x: -89, y: 0}
+        - {x: -52, y: -99}
+        - {x: 42, y: -99}
+        - {x: 42, y: -88}
+        - {x: 78, y: -42}
+        - {x: 78, y: 48}
+    - name: mushroom_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 42}
+        - {x: -70, y: 28}
+        - {x: -88, y: 9}
+        - {x: -88, y: -2}
+        - {x: -86, y: -8}
+        - {x: -40, y: -98}
+        - {x: 52, y: -98}
+        - {x: 79, y: -48}
+        - {x: 79, y: 26}
+        - {x: 46, y: 42}
+    - name: mushroom_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -69, y: 12}
+        - {x: -89, y: -11}
+        - {x: -89, y: -48}
+        - {x: -44, y: -95}
+        - {x: -38, y: -99}
+        - {x: 65, y: -99}
+        - {x: 78, y: -78}
+        - {x: 78, y: -7}
+        - {x: 41, y: 12}
+    - name: mushroom_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 78, y: -59}
+        - {x: 78, y: -48}
+        - {x: 43, y: -25}
+        - {x: -47, y: -25}
+        - {x: -54, y: -26}
+        - {x: -84, y: -36}
+        - {x: -89, y: -45}
+        - {x: -89, y: -52}
+        - {x: -85, y: -54}
+        - {x: -41, y: -98}
+        - {x: 38, y: -98}
+        - {x: 43, y: -96}
+        - {x: 38, y: -85}
+        - {x: 76, y: -62}
+    - name: mushroom_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 65, y: -5}
+        - {x: 23, y: 13}
+        - {x: -69, y: 13}
+        - {x: -76, y: 9}
+        - {x: -76, y: -40}
+        - {x: -42, y: -98}
+        - {x: 31, y: -98}
+        - {x: 35, y: -96}
+        - {x: 34, y: -86}
+        - {x: 65, y: -40}
+    - name: mushroom_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 42}
+        - {x: -37, y: 42}
+        - {x: -74, y: 26}
+        - {x: -74, y: -48}
+        - {x: -53, y: -98}
+        - {x: 61, y: -98}
+        - {x: 65, y: -91}
+        - {x: 65, y: 11}
+        - {x: 29, y: 38}
+    - name: mushroom_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 7}
+        - {x: 39, y: 42}
+        - {x: 24, y: 59}
+        - {x: -51, y: 59}
+        - {x: -64, y: 57}
+        - {x: -64, y: -78}
+        - {x: -58, y: -98}
+        - {x: 24, y: -98}
+        - {x: 28, y: -96}
+        - {x: 27, y: -82}
+        - {x: 53, y: -22}
+    - name: mushroom_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 64, y: -10}
+        - {x: 64, y: 8}
+        - {x: 36, y: 58}
+        - {x: -50, y: 58}
+        - {x: -75, y: 53}
+        - {x: -75, y: -62}
+        - {x: -60, y: -99}
+        - {x: 30, y: -99}
+        - {x: 34, y: -97}
+        - {x: 33, y: -83}
+        - {x: 63, y: -15}
+    - name: mushroom_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 59}
+        - {x: -66, y: 59}
+        - {x: -89, y: 53}
+        - {x: -89, y: -46}
+        - {x: -70, y: -98}
+        - {x: 48, y: -98}
+        - {x: 79, y: -39}
+        - {x: 79, y: 9}
+        - {x: 50, y: 56}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
