@@ -9,6 +9,9 @@ public class playerHunter : MonoBehaviour {
     bool isShoot = false;
     bool PowerShot = false;
 
+    private playerStat playerStats;
+    
+
 	public Renderer spriteR, spriteL ;
 
     [SerializeField]
@@ -34,6 +37,7 @@ public class playerHunter : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        playerStats = GetComponent<playerStat>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
 		animLeg = gameObject.transform.Find("LEGS").GetComponent<Animator>();
 		animTopR = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-1").GetComponent<Animator>();
@@ -45,6 +49,7 @@ public class playerHunter : MonoBehaviour {
 		spriteR.enabled = true;
 		spriteL.enabled = false;
 
+        
 
 	}
 	
@@ -348,7 +353,8 @@ public class playerHunter : MonoBehaviour {
 		}
 
 		if (hitInfo.gameObject.tag == "Slash") { //If Player got slashed by the blade.....
-			Bleed.Play();
+            playerStats.currentHp -= 50;
+            Bleed.Play();
 			var BloodSpill = (GameObject)Instantiate(BloodPrefab, hitInfo.transform.position, Quaternion.identity);
 			BloodSpill.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3,3), Random.Range(-3,0));
 
@@ -356,7 +362,14 @@ public class playerHunter : MonoBehaviour {
 				BloodSpill.transform.localScale = new Vector3(-BloodSpill.transform.localScale.x , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
 			}
 		}
-	}
+        if (hitInfo.gameObject.tag == "Soul")
+        {
+            int soul = hitInfo.GetComponent<soul>().SoulCount;
+            playerStats.PlayerCurrentSoul += soul;
+            
+        }
+
+    }
 
 	IEnumerator immovable(){
 		yield return new WaitForSeconds (3);
@@ -370,7 +383,8 @@ public class playerHunter : MonoBehaviour {
 	{
 		if ((hitInfo.gameObject.tag == "Arrow") || (hitInfo.gameObject.tag == "ArrowSuper")) //If Player was shot.....
 		{
-			Bleed.Play();
+           
+            Bleed.Play();
 			var BloodSpill = (GameObject)Instantiate(BloodPrefab, hitInfo.transform.position, Quaternion.identity);
 			BloodSpill.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3,3), Random.Range(-3,0));
 
@@ -378,8 +392,13 @@ public class playerHunter : MonoBehaviour {
 				BloodSpill.transform.localScale = new Vector3(-BloodSpill.transform.localScale.x , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
 			}
 			if (hitInfo.gameObject.tag == "ArrowSuper") {
-				BloodSpill.transform.localScale = new Vector3(BloodSpill.transform.localScale.x *1.5f , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
+                playerStats.currentHp -= 100;
+                BloodSpill.transform.localScale = new Vector3(BloodSpill.transform.localScale.x *1.5f , BloodSpill.transform.localScale.y , BloodSpill.transform.localScale.z);
 			}
+            if(hitInfo.gameObject.tag == "Arrow")
+            {
+                playerStats.currentHp -= 25;
+            }
 		}
 	}
 }
