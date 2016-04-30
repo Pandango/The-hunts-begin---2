@@ -11,8 +11,8 @@ public class objectInteractionController : MonoBehaviour {
     public bool isEnter = false;
 
     [SerializeField]
-    bool isEnterBush = false;
-    bool isGetInBush = false;
+    public bool isEnterBush = false;
+    public bool isGetInBush = false;
     [SerializeField]
     string caveName;
 
@@ -95,6 +95,7 @@ public class objectInteractionController : MonoBehaviour {
             playerLeg.enabled = false;
             player.enabled = false;
             isGetInBush = true;
+            
         }
         else if (Input.GetKeyDown(KeyCode.LeftControl) && isEnterBush && isGetInBush)
         {

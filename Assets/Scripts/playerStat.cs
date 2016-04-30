@@ -14,8 +14,8 @@ public class playerStat : MonoBehaviour
     //hp&sp test
     public int damage;
     //public float sp;
-    public int MaxHp = 100;
-    public int currentHp;   
+    public float MaxHp = 100;
+    public float currentHp;   
     public int PlayerSoul;
     public int PlayerCurrentSoul = 1;
     public GameObject Player;

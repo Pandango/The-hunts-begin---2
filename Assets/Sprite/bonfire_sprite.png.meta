@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: c98617756d7c28246ad858ac755e31ff
+timeCreated: 1462051275
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bonfire_sprite_0
+    21300002: bonfire_sprite_1
+    21300004: bonfire_sprite_2
+    21300006: bonfire_sprite_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: bonfire_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 72, y: 29}
+        - {x: 49, y: 68}
+        - {x: 41, y: 70}
+        - {x: 36, y: 70}
+        - {x: 35, y: 69}
+        - {x: 11, y: 40}
+        - {x: 11, y: 33}
+        - {x: 15, y: 30}
+        - {x: -7, y: 35}
+        - {x: -84, y: -91}
+        - {x: -84, y: -96}
+        - {x: -83, y: -98}
+        - {x: 73, y: -98}
+        - {x: 75, y: -97}
+        - {x: 75, y: -90}
+      - - {x: -5, y: 44}
+        - {x: -11, y: 44}
+        - {x: -14, y: 40}
+        - {x: -14, y: 25}
+        - {x: -10, y: 15}
+        - {x: -2, y: 15}
+        - {x: -1, y: 16}
+        - {x: -1, y: 27}
+        - {x: -2, y: 33}
+    - name: bonfire_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 40}
+        - {x: 12, y: 33}
+        - {x: 16, y: 30}
+        - {x: 13, y: 31}
+        - {x: 0, y: 43}
+        - {x: -21, y: 34}
+        - {x: -83, y: -66}
+        - {x: -83, y: -98}
+        - {x: 76, y: -98}
+        - {x: 76, y: -23}
+        - {x: 60, y: 70}
+        - {x: 37, y: 70}
+        - {x: 36, y: 69}
+      - - {x: -11, y: 44}
+        - {x: -12, y: 37}
+        - {x: -12, y: 24}
+        - {x: -7, y: 16}
+        - {x: -5, y: 15}
+        - {x: 0, y: 15}
+        - {x: 0, y: 34}
+        - {x: -2, y: 44}
+    - name: bonfire_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 39}
+        - {x: 11, y: 32}
+        - {x: 15, y: 29}
+        - {x: 12, y: 30}
+        - {x: 6, y: 40}
+        - {x: 4, y: 55}
+        - {x: 1, y: 56}
+        - {x: -3, y: 56}
+        - {x: -6, y: 36}
+        - {x: -12, y: -1}
+        - {x: -13, y: -3}
+        - {x: -12, y: -3}
+        - {x: -13, y: -1}
+        - {x: -19, y: 48}
+        - {x: -84, y: -43}
+        - {x: -84, y: -99}
+        - {x: 75, y: -99}
+        - {x: 75, y: -52}
+        - {x: 56, y: 69}
+        - {x: 36, y: 69}
+        - {x: 35, y: 68}
+      - - {x: 33, y: -44}
+        - {x: 36, y: -50}
+        - {x: 39, y: -50}
+        - {x: 40, y: -49}
+        - {x: 40, y: -37}
+        - {x: 36, y: -33}
+        - {x: 33, y: -34}
+      - - {x: 36, y: -32}
+        - {x: 39, y: -37}
+        - {x: 46, y: -37}
+        - {x: 46, y: -13}
+        - {x: 37, y: -13}
+        - {x: 36, y: -16}
+      - - {x: -11, y: 43}
+        - {x: -11, y: 23}
+        - {x: -9, y: 14}
+        - {x: -1, y: 14}
+        - {x: -1, y: 36}
+        - {x: -2, y: 43}
+      - - {x: 17, y: 62}
+        - {x: 11, y: 59}
+        - {x: 11, y: 44}
+        - {x: 13, y: 40}
+        - {x: 16, y: 40}
+        - {x: 21, y: 44}
+        - {x: 21, y: 61}
+        - {x: 20, y: 62}
+    - name: bonfire_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 40}
+        - {x: 11, y: 33}
+        - {x: 15, y: 30}
+        - {x: 18, y: 22}
+        - {x: 5, y: 41}
+        - {x: 7, y: 72}
+        - {x: 5, y: 73}
+        - {x: -34, y: 73}
+        - {x: -84, y: -30}
+        - {x: -84, y: -98}
+        - {x: 75, y: -98}
+        - {x: 75, y: -63}
+        - {x: 49, y: 68}
+        - {x: 36, y: 71}
+        - {x: 35, y: 69}
+      - - {x: 38, y: -12}
+        - {x: 36, y: -13}
+        - {x: 36, y: -27}
+        - {x: 38, y: -36}
+        - {x: 43, y: -36}
+        - {x: 45, y: -34}
+        - {x: 45, y: -18}
+        - {x: 42, y: -12}
+      - - {x: -7, y: 17}
+        - {x: -4, y: 16}
+        - {x: -1, y: 17}
+        - {x: -1, y: 27}
+        - {x: -4, y: 30}
+        - {x: -7, y: 29}
+      - - {x: -10, y: 34}
+        - {x: -8, y: 32}
+        - {x: -5, y: 33}
+        - {x: -5, y: 42}
+        - {x: -7, y: 44}
+        - {x: -10, y: 43}
+      - - {x: 15, y: 63}
+        - {x: 11, y: 59}
+        - {x: 11, y: 45}
+        - {x: 12, y: 41}
+        - {x: 15, y: 41}
+        - {x: 20, y: 44}
+        - {x: 20, y: 62}
+        - {x: 18, y: 63}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
