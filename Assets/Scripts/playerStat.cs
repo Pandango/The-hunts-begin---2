@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class playerStat : MonoBehaviour
 {
 
-    //public Slider Healthbar;
+    public Slider Healthbar;
     //public Slider Staminabar;
-    //public GameObject hpBlank;
+    public GameObject hpBlank;
     //public GameObject spBlank;
     
     //hp&sp test
@@ -32,10 +32,10 @@ public class playerStat : MonoBehaviour
         
         PlayerCurrentSoul = 1;
         currentHp = MaxHp;
-        //Healthbar.maxValue = MaxHp;
+        Healthbar.maxValue = currentHp;
+        //Healthbar.value = currentHp;
         //Staminabar.maxValue = MaxSp;
-
-        //Healthbar.value = MaxHp;
+        
         //Staminabar.value = MaxSp;
         PlayerHunter = GetComponent<playerHunter>();
         objInteractCtrl = GetComponent<objectInteractionController>();
@@ -68,14 +68,15 @@ public class playerStat : MonoBehaviour
 
     void currentHpCtrl()
     {
-        if(currentHp > MaxHp)
+        Healthbar.value = currentHp;
+        if (currentHp > MaxHp)
         {
             currentHp = MaxHp;
         }
 
         if(currentHp <= 0)
         {
-           
+            hpBlank.SetActive(false);
             playerDeath();
         }
     }
