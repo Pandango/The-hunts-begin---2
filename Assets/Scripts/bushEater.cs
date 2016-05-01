@@ -2,22 +2,47 @@
 using System.Collections;
 
 public class bushEater : MonoBehaviour {
-    private playerStat playerStats;
+    //private playerStat playerStats;
     private Animator anim;
-    private objectInteractionController inBush;
+    public bool playerInBush;
     // Use this for initialization
     void Start () {
-        playerStats = GameObject.Find("Player").GetComponent<playerStat>();
-        inBush = GameObject.Find("Player").GetComponent<objectInteractionController>();
-        anim = GetComponent<Animator>();
+        playerInBush = false;
+        anim = this.gameObject.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && inBush.isEnterBush && !inBush.isGetInBush)
+        
+    }
+   void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        if(hitInfo.tag == "Player" && !playerInBush)
+        {           
+            playerInBush = true;
+            
+        }
+        if ( hitInfo.tag == "Player" && playerInBush)
         {
             anim.SetTrigger("inBush");
+
         }
     }
-   
+    void OnTriggerStay2D(Collider2D hitInfo)
+    {
+        if (hitInfo.tag == "Player" && !playerInBush)
+        {
+            playerInBush = true;
+           
+        }
+       
+    }
+    void OnTriggerExit2D(Collider2D hitInfo)
+    {
+        if (hitInfo.tag == "Player")
+        {
+            playerInBush = false;
+            
+        }
+    }
 }
