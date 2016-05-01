@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class playerStat : MonoBehaviour
+public class playerStat : NetworkBehaviour
 {
 
     public Slider Healthbar;

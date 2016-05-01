@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class playerHunter : MonoBehaviour {
+public class playerHunter : NetworkBehaviour {
 
     private Rigidbody2D rb2d;
     public bool grounded;
@@ -35,6 +36,8 @@ public class playerHunter : MonoBehaviour {
     public float Speed = 2f;
     private float speedx;
 
+	SpawnManager spawnManager;
+
     // Use this for initialization
     void Start () {
         playerStats = GetComponent<playerStat>();
@@ -42,6 +45,9 @@ public class playerHunter : MonoBehaviour {
 		animLeg = gameObject.transform.Find("LEGS").GetComponent<Animator>();
 		animTopR = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-1").GetComponent<Animator>();
 		animTopL = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-2").GetComponent<Animator>();
+
+		spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager> ();
+
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
 		Bleed = audios[1];
@@ -64,11 +70,11 @@ public class playerHunter : MonoBehaviour {
 
         if ((Input.GetMouseButton(0)) && (ScoreController.skillCD0 == 0))
         {
-            Shoot();
+            CmdShoot();
         }
         if ((Input.GetMouseButton(2)) && (ScoreController.skillCD1 == 0))
         {
-            ShootSuper();
+			CmdShootSuper();
         }
         if ((Input.GetMouseButton(1)) && (ScoreController.skillCD2 == 0))
         {
@@ -76,7 +82,7 @@ public class playerHunter : MonoBehaviour {
         }
         if ((Input.GetKeyDown(trap)) && (ScoreController.skillCD3 == 0))
         {
-            Trap();
+			CmdTrap();
         }
     }
 
@@ -224,20 +230,22 @@ public class playerHunter : MonoBehaviour {
 
     }
 
-        void Shoot()
-    	{
-			if (faceRight) {
+	[Command]
+    void CmdShoot()
+    {
+		if (faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
 				animTopR.SetTrigger ("SHOOT");
-			} else if (!faceRight) {
+		} else if (!faceRight) {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
 				animTopL.SetTrigger ("SHOOT");
-			}
+		}
 		
 
 			// instantiat 1 bullet
 
-			var Arrow = (GameObject)Instantiate (ArrowPrefab, bow.position, bow.rotation);
+		var Arrow = (GameObject)Instantiate (ArrowPrefab, bow.position, bow.rotation);
+
 		if (faceRight)
 		{
 			shootPower = shootForce + (rb2d.velocity.x)/2;
@@ -247,12 +255,14 @@ public class playerHunter : MonoBehaviour {
 			shootPower = shootForce - (rb2d.velocity.x)/2;
 		}
 			Arrow.GetComponent<Rigidbody2D> ().velocity = bow.TransformDirection (new Vector3 (0, shootPower, 0));
+		NetworkServer.Spawn (Arrow);
 			//Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 			ScoreController.skillCD0 = 1f;
 			ScoreController.skillCD2 = 0.5f;
     }
 
-    void ShootSuper()
+	[Command]
+	void CmdShootSuper()
     {
 
 			if (faceRight) {
@@ -267,6 +277,7 @@ public class playerHunter : MonoBehaviour {
         // instantiat 1 bullet
 
         var ArrowSuper = (GameObject)Instantiate(ArrowSuperPrefab, bow.position, bow.rotation);
+
 		if (faceRight)
 		{
 			shootPower = shootForce + (rb2d.velocity.x)/2;
@@ -276,6 +287,7 @@ public class playerHunter : MonoBehaviour {
 			shootPower = shootForce - (rb2d.velocity.x)/2;
 		}
 		ArrowSuper.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector3(0, shootPower*5/2, 0));
+		NetworkServer.Spawn (ArrowSuper);
         //Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 
         ScoreController.skillCD1 = 10f;
@@ -311,7 +323,8 @@ public class playerHunter : MonoBehaviour {
         ScoreController.skillCD2 = 0.5f;
     }
 
-    void Trap()
+	[Command]
+	void CmdTrap()
     {
 		if (faceRight) {
 			bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint1");
@@ -323,6 +336,7 @@ public class playerHunter : MonoBehaviour {
 		// instantiat 1 bullet
 
 		var BearTrap = (GameObject)Instantiate(TrapPrefab, bow.position, Quaternion.identity);
+
 		if (faceRight)
 		{
 			TrapPower = TrapForce + (rb2d.velocity.x);
@@ -332,6 +346,7 @@ public class playerHunter : MonoBehaviour {
 			TrapPower = TrapForce - (rb2d.velocity.x);
 		}
 		BearTrap.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, TrapPower));
+		NetworkServer.Spawn (BearTrap);
 
         ScoreController.skillCD3 = 20f;
     }

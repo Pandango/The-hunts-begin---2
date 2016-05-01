@@ -20,7 +20,7 @@ public class ScoreController : MonoBehaviour {
         if(skillCD0 == 0)
         {
             SkillPic0.color = Color.white;
-            SkillText0.color = Color.black;
+			SkillText0.color = Color.white;
             SkillText0.text = "LClick";
         }
         else
@@ -33,7 +33,7 @@ public class ScoreController : MonoBehaviour {
         if (skillCD1 == 0)
         {
             SkillPic1.color = Color.white;
-            SkillText1.color = Color.black;
+			SkillText1.color = Color.white;
             SkillText1.text = "MClick";
         }
         else
@@ -46,7 +46,7 @@ public class ScoreController : MonoBehaviour {
         if (skillCD2 == 0)
         {
             SkillPic2.color = Color.white;
-            SkillText2.color = Color.black;
+			SkillText2.color = Color.white;
             SkillText2.text = "RClick";
         }
         else
@@ -59,7 +59,7 @@ public class ScoreController : MonoBehaviour {
         if (skillCD3 == 0)
         {
             SkillPic3.color = Color.white;
-            SkillText3.color = Color.black;
+			SkillText3.color = Color.white;
             SkillText3.text = "LShift";
         }
         else
