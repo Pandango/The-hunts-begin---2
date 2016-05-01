@@ -36,7 +36,6 @@ public class playerHunter : NetworkBehaviour {
     public float Speed = 2f;
     private float speedx;
 
-	SpawnManager spawnManager;
 
     // Use this for initialization
     void Start () {
@@ -45,8 +44,6 @@ public class playerHunter : NetworkBehaviour {
 		animLeg = gameObject.transform.Find("LEGS").GetComponent<Animator>();
 		animTopR = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-1").GetComponent<Animator>();
 		animTopL = gameObject.transform.Find("MainRotatePoint/RotatePoint/HunterTop-2").GetComponent<Animator>();
-
-		spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager> ();
 
         AudioSource[] audios = GetComponents<AudioSource>();
         SlashS = audios[0];
@@ -78,7 +75,7 @@ public class playerHunter : NetworkBehaviour {
         }
         if ((Input.GetMouseButton(1)) && (ScoreController.skillCD2 == 0))
         {
-            Slash();
+            CmdSlash();
         }
         if ((Input.GetKeyDown(trap)) && (ScoreController.skillCD3 == 0))
         {
@@ -257,8 +254,7 @@ public class playerHunter : NetworkBehaviour {
 			Arrow.GetComponent<Rigidbody2D> ().velocity = bow.TransformDirection (new Vector3 (0, shootPower, 0));
 		NetworkServer.Spawn (Arrow);
 			//Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
-			ScoreController.skillCD0 = 1f;
-			ScoreController.skillCD2 = 0.5f;
+		coolDown (0);
     }
 
 	[Command]
@@ -290,10 +286,11 @@ public class playerHunter : NetworkBehaviour {
 		NetworkServer.Spawn (ArrowSuper);
         //Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 
-        ScoreController.skillCD1 = 10f;
+		coolDown (1);
     }
 
-    void Slash()
+	[Command]
+    void CmdSlash()
     {
 
 			if (faceRight) {
@@ -308,19 +305,19 @@ public class playerHunter : NetworkBehaviour {
         // instantiat 1 bullet
 		SlashS.Play();
 
-        /*var Slash = (GameObject)Instantiate(SlashPrefab, bow.position, bow.rotation);
+        var Slash = (GameObject)Instantiate(SlashPrefab, bow.position, bow.rotation);
         if (faceRight)
         {
-			slashPower = rb2d.velocity.x;
+			slashPower = slashForce + (rb2d.velocity.x);
         }
         else if (!faceRight)
         {
-			slashPower = -rb2d.velocity.x;
+			slashPower = slashForce - (rb2d.velocity.x);
         }
-		Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));*/
+		Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));
+		NetworkServer.Spawn (Slash);
         
-        ScoreController.skillCD0 = 0.5f;
-        ScoreController.skillCD2 = 0.5f;
+		coolDown (2);
     }
 
 	[Command]
@@ -348,7 +345,7 @@ public class playerHunter : NetworkBehaviour {
 		BearTrap.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, TrapPower));
 		NetworkServer.Spawn (BearTrap);
 
-        ScoreController.skillCD3 = 20f;
+		coolDown (3);
     }
 
 	void OnTriggerEnter2D(Collider2D hitInfo)
@@ -430,5 +427,20 @@ public class playerHunter : NetworkBehaviour {
             }
             
         }
+	}
+
+	[Client] void coolDown (int skID){
+		if (skID == 0) {
+			ScoreController.skillCD0 = 1f;
+			ScoreController.skillCD2 = 0.5f;
+		} else if (skID == 1) {
+			ScoreController.skillCD1 = 10f;
+		} else if (skID == 2) {
+			ScoreController.skillCD0 = 1f;
+			ScoreController.skillCD2 = 0.5f;
+		} else if (skID == 3) {
+
+			ScoreController.skillCD3 = 20f;
+		}
 	}
 }

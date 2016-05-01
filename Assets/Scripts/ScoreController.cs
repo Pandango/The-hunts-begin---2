@@ -13,7 +13,9 @@ public class ScoreController : MonoBehaviour {
 	
     void Start()
     {
-        
+		skillCD0 = 0; skillCD1 = 0; skillCD2 = 0; skillCD3 = 0;
+		skillCD0_show = 0; skillCD1_show = 0; skillCD2_show = 0; skillCD3_show = 0;
+		isCD = false;
     }
 
 	void Update () {
