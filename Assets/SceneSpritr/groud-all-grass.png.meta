@@ -1,0 +1,92 @@
+fileFormatVersion: 2
+guid: ad17ca4500458c743ac7597c03e2b691
+timeCreated: 1462073607
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: groud-all-grass_0
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: groud-all-grass_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 254
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 61, y: 107}
+        - {x: 61, y: 116}
+        - {x: 59, y: 119}
+        - {x: 50, y: 119}
+        - {x: 45, y: 114}
+        - {x: 43, y: 113}
+        - {x: 38, y: 113}
+        - {x: 33, y: 111}
+        - {x: 33, y: 104}
+        - {x: -53, y: 104}
+        - {x: -53, y: 109}
+        - {x: -55, y: 111}
+        - {x: -60, y: 115}
+        - {x: -64, y: 115}
+        - {x: -67, y: 111}
+        - {x: -73, y: 112}
+        - {x: -77, y: 109}
+        - {x: -77, y: 104}
+        - {x: -127, y: 104}
+        - {x: -127, y: -119}
+        - {x: 127, y: -119}
+        - {x: 127, y: 104}
+        - {x: 59, y: 104}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
