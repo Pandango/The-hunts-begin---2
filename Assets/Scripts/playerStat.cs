@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class playerStat : NetworkBehaviour
 {
+	/*[SerializeField]
+	Behaviour[] componentsToDisable;*/
+	Camera sceneCamera;
 
     public Slider Healthbar;
     //public Slider Staminabar;
@@ -154,7 +157,15 @@ public class playerStat : NetworkBehaviour
 		BloodSpill6.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(1,9), Random.Range(-5,0));
 		NetworkServer.Spawn (BloodSpill6);
 
+		//sceneCamera = Camera.main;
+		//sceneCamera.transform.position = this.transform.position;
+		//sceneCamera.gameObject.SetActive(true);
 		Destroy(gameObject);
+		/*for (int i = 0; i < componentsToDisable.Length; i++) {
+			componentsToDisable [i].enabled = false;
+		}*/
+		//sceneCamera.gameObject.SetActive(true);
+
     }
     //คำนวณการใช้ stamina ของ player
     //void playerSpUsed()

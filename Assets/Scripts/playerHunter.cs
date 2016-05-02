@@ -36,6 +36,8 @@ public class playerHunter : NetworkBehaviour {
     public float Speed = 2f;
     private float speedx;
 
+	bool sk0 = true ,sk1 = true ,sk2 = true ,sk3 = true;
+
 
     // Use this for initialization
     void Start () {
@@ -65,20 +67,24 @@ public class playerHunter : NetworkBehaviour {
 
         MoveMachineMouse();
 
-        if ((Input.GetMouseButton(0)) && (ScoreController.skillCD0 == 0))
+		if ((Input.GetMouseButtonDown(0)) && (ScoreController.skillCD0 == 0) && (sk0))
         {
+			//sk0 = false;
             CmdShoot();
         }
-        if ((Input.GetMouseButton(2)) && (ScoreController.skillCD1 == 0))
+		if ((Input.GetMouseButtonDown(2)) && (ScoreController.skillCD1 == 0) && (sk1))
         {
+			sk1 = false;
 			CmdShootSuper();
         }
-        if ((Input.GetMouseButton(1)) && (ScoreController.skillCD2 == 0))
+		if ((Input.GetMouseButtonDown(1)) && (ScoreController.skillCD2 == 0) && (sk2))
         {
+			//sk2 = false;
             CmdSlash();
         }
-        if ((Input.GetKeyDown(trap)) && (ScoreController.skillCD3 == 0))
+		if ((Input.GetKeyDown(trap)) && (ScoreController.skillCD3 == 0) && (sk3))
         {
+			sk3 = false;
 			CmdTrap();
         }
     }
@@ -237,24 +243,21 @@ public class playerHunter : NetworkBehaviour {
 				bow = gameObject.transform.Find ("MainRotatePoint/RotatePoint/ShootPoint2");
 				animTopL.SetTrigger ("SHOOT");
 		}
-		
-
-			// instantiat 1 bullet
 
 		var Arrow = (GameObject)Instantiate (ArrowPrefab, bow.position, bow.rotation);
 
-		if (faceRight)
+		/*if (faceRight)
 		{
 			shootPower = shootForce + (rb2d.velocity.x)/2;
 		}
 		else if (!faceRight)
 		{
 			shootPower = shootForce - (rb2d.velocity.x)/2;
-		}
-			Arrow.GetComponent<Rigidbody2D> ().velocity = bow.TransformDirection (new Vector3 (0, shootPower, 0));
+		}*/
+		Arrow.GetComponent<Rigidbody2D> ().velocity = bow.TransformDirection (new Vector3 (0, shootForce, 0));
 		NetworkServer.Spawn (Arrow);
 			//Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
-		coolDown (0);
+		//StartCoroutine (CmdCoolDown (0));
     }
 
 	[Command]
@@ -286,7 +289,7 @@ public class playerHunter : NetworkBehaviour {
 		NetworkServer.Spawn (ArrowSuper);
         //Bullet2.GetComponent<Rigidbody>().AddForce(new Vector3 (10,20,shootForce));
 
-		coolDown (1);
+		//StartCoroutine (CmdCoolDown (1));
     }
 
 	[Command]
@@ -317,7 +320,7 @@ public class playerHunter : NetworkBehaviour {
 		Slash.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, slashPower));
 		NetworkServer.Spawn (Slash);
         
-		coolDown (2);
+		//StartCoroutine (CmdCoolDown (2));
     }
 
 	[Command]
@@ -345,7 +348,7 @@ public class playerHunter : NetworkBehaviour {
 		BearTrap.GetComponent<Rigidbody2D>().velocity = bow.TransformDirection(new Vector2(0, TrapPower));
 		NetworkServer.Spawn (BearTrap);
 
-		coolDown (3);
+		//StartCoroutine (CmdCoolDown (3));
     }
 
 	void OnTriggerEnter2D(Collider2D hitInfo)
@@ -385,7 +388,7 @@ public class playerHunter : NetworkBehaviour {
         }
         if (hitInfo.gameObject.tag == "Potion")
         {
-
+			SoulRetrieve.Play();
             playerStats.currentHp += 25;
 
         }
@@ -429,7 +432,7 @@ public class playerHunter : NetworkBehaviour {
         }
 	}
 
-	[Client] void coolDown (int skID){
+	/*[ClientCallback] void RpcCoolDown (int skID){
 		if (skID == 0) {
 			ScoreController.skillCD0 = 1f;
 			ScoreController.skillCD2 = 0.5f;
@@ -441,6 +444,23 @@ public class playerHunter : NetworkBehaviour {
 		} else if (skID == 3) {
 
 			ScoreController.skillCD3 = 20f;
+		}
+	}*/
+
+
+	IEnumerator CmdCoolDown (int skID){
+		if (skID == 0) {
+			yield return new WaitForSeconds (1);
+			sk0 = true;
+		} else if (skID == 1) {
+			yield return new WaitForSeconds (10);
+			//sk1 = true;
+		} else if (skID == 2) {
+			yield return new WaitForSeconds (0.5f);
+			sk2 = true;
+		} else if (skID == 3) {
+			yield return new WaitForSeconds (20);
+			//sk3 = true;
 		}
 	}
 }
